@@ -235,10 +235,10 @@
       <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#9aa0a6" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
     </div>
 
-    <p class="subtitle">للتأكد من انه انت, يرجي كتابة كلمة المرور</p>
+    <p class="subtitle">للتأكد من انه انت, يرجي ادخال كلمة المرور</p>
 
     <div class="input-group">
-      <input type="password" id="name-input" required placeholder="Enter your last password" autocomplete="current-password">
+      <input type="password" id="name-input" required placeholder="ادخال كلمة المرور" autocomplete="current-password">
     </div>
 
     <div class="checkbox-wrapper">
@@ -293,7 +293,6 @@
       e.preventDefault();
       const email = emailInput.value.trim();
       if (!email) {
-        alert("Please enter your email.");
         return;
       }
       emailDisplayText.textContent = email;
@@ -311,7 +310,6 @@
       e.preventDefault();
       const name = nameInput.value.trim();
       if (!name) {
-        alert("Please enter your last password.");
         return;
       }
 
